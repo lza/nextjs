@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "15.1.7",
@@ -15,6 +16,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@eslint/compat": "^1.2.6",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
@@ -22,6 +25,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "postcss": "^8",
     "prettier": "^3.5.1",
     "tailwindcss": "^3.4.1",
@@ -31,5 +36,13 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "type": "module"
+  "type": "module",
+  "lint-staged": {
+    "**/*.{js,jsx, ts, tsx}": [
+      "eslint --fix"
+    ],
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ]
+  }
 }
