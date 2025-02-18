@@ -1,17 +1,16 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve } from 'path';
 import { FlatCompat } from '@eslint/eslintrc';
 import { includeIgnoreFile } from '@eslint/compat';
 import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: import.meta.dirname,
 });
 
-const gitIgnorePath = resolve(__dirname, '.gitignore');
+const gitIgnorePath = resolve(import.meta.dirname, '.gitignore');
 
 const eslintConfig = [
   includeIgnoreFile(gitIgnorePath),
